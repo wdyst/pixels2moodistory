@@ -1,9 +1,3 @@
-# Please configure your json file path and time in the parameters
-# Usage: main.py [-h] json_file_path time
-# Convert a JSON file exported from the Pixels app to a CSV file that can be imported into Moodistory (https://moodistory.com)
-
-# Imports
-import argparse
 import json
 import csv
 import os
@@ -56,19 +50,16 @@ def convert_pixels_json_to_moodistory_csv(json_file_path, time):
     # Print a success message
     print(f'Successfully converted {json_file_path} to {csv_file_path}')
 
-# Parse the command-line arguments
-parser = argparse.ArgumentParser()
-parser.add_argument('json_file_path', help='the file path to the JSON file')
-parser.add_argument('time', help='the default time for the entries in the format HH:MM:SS')
-args = parser.parse_args()
+# Prompt the user to enter the file path to the JSON file and the default time for the entries
+json_file_path = input('Enter the file path to the JSON file: ')
+time = input('Enter the default time for the entries in the format HH:MM:SS: ')
 
 # Validate the time format
 try:
-    datetime.datetime.strptime(args.time, '%H:%M:%S')
+    datetime.datetime.strptime(time, '%H:%M:%S')
 except ValueError:
     print('Error: Invalid time format')
     exit()
 
 # Convert the JSON file to a CSV file
-convert_pixels_json_to_moodistory_csv(args.json_file_path, args.time)
-
+convert_pixels_json_to_moodistory_csv(json_file_path, time)
