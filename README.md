@@ -1,2 +1,2 @@
 # pixels2moodistory
- An application to convert JSON files from Pixels (a mood tracking app) to CSV files that are compatible with Moodistory (also a mood tracking app)
+This program converts JSON files exported from the [Pixels - Mood & Mental Health](https://play.google.com/store/apps/details?id=ar.teovogel.yip) app to importable CSV files for the [Moodistory](https://play.google.com/store/apps/details?id=com.matoph.moodistory) app.
