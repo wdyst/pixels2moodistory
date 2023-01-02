@@ -7,7 +7,7 @@ import textwrap
 def convert_pixels_json_to_moodistory_csv(json_file_path, time):
     # Open the input JSON file and read the data
     try:
-        with open(json_file_path, 'r') as f:
+        with open(json_file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         print(f'Error: Unable to open or parse file {json_file_path}')
@@ -27,8 +27,6 @@ def convert_pixels_json_to_moodistory_csv(json_file_path, time):
                 mood = entry['value']
             if 'notes' in entry:
                 notes_and_thoughts = textwrap.dedent(entry['notes']).strip()
-                if not notes_and_thoughts:
-                    notes_and_thoughts = "Nothing noted"
 
         # Add a row to the output CSV file if a mood was recorded for this day
         if mood is not None:
